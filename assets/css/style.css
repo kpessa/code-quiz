@@ -1,0 +1,139 @@
+:root {
+  --clr-drk-purple: rgb(53,28,117);
+  --clr-lgt-purple: rgb(189,96,231);
+  --clr-faded-purp: rgb(217,211,233);
+}
+
+/* #intro,  */
+
+#quiz, #ending, #high-score-view {
+  display:none;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+/* --------------------
+ * Typography
+-------------------- */
+
+h1, h2, h3, h4 {
+  margin: 1rem 0; 
+  font-weight: 600;
+}
+
+p {
+  font-weight: 500;
+}
+
+a {
+  color: var(--clr-lgt-purple);
+  text-decoration: none;
+}
+
+.result {
+  margin-top: 10px;
+  margin-left: 5px;
+  color: grey;
+}
+
+/* --------------------
+  * Buttons / Lis
+-------------------- */
+
+#btnStart { 
+  margin-top: 1rem;
+}
+
+.btn {
+  background-color: var(--clr-drk-purple);
+  color: white;
+  padding: 8px 20px;
+  border-radius: 7px;
+  border: none;
+}
+
+ol {
+  counter-reset: myOrderedListItemsCounter;
+  display: flex;
+  flex-direction: column;
+}
+
+ol li {
+  list-style-type: none;
+  position: relative;
+  margin-top: 0.5rem;
+}
+
+ol li:before {
+  counter-increment: myOrderedListItemsCounter;
+  content: counter(myOrderedListItemsCounter)". ";
+  margin-right: 0.5em;
+}
+
+button:hover, li:hover {
+  background-color: var(--clr-lgt-purple);
+  transition: ease-in 250ms;
+  cursor: pointer;
+}
+
+input {
+  padding: 5px;
+}
+
+.buttons {
+  margin-top: 1rem;
+}
+
+/* --------------------
+  * IDs
+-------------------- */
+
+#high-score, #timer {
+  padding: 1rem;
+}
+
+
+
+#high-score {
+  display: inline-block;
+}
+
+/* --------------------
+ * Utility Classes
+-------------------- */
+hr {
+  margin-top: 30px;
+}
+
+.high-scores {
+  background-color: var(--clr-faded-purp);
+  padding: 5px;
+}
+
+.flex {
+  margin-top: 1rem;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.right {
+  float: right;
+}
+
+.container {
+  margin-left: 20%;
+  margin-right: 20%;
+}
+
+.center {
+  text-align: center;
+}
+
+.left {
+  text-align: left;
+}

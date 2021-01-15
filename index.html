@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Code Quiz</title>
+    <link rel="stylesheet" href="./assets/css/style.css" />
+  </head>
+  <body>
+    <header>
+      <a id="high-score" href="#">View high scores</a>
+      <p id="timer" class="right">Time: <span id="clock">100</span></p>
+    </header>
+    <main>
+      <div class="container center">
+        <!-- ! ---------------------------- -->
+        <!-- !        1.) INTRO             -->
+        <!-- ! ---------------------------- -->
+        <section id="intro">
+          <h1>Coding Quiz Challenge</h1>
+          <p>Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers will penalize your score/time by ten seconds!</p>
+          <button class="btn" id="btnStart">Start Quiz</button>
+        </section>
+      </div>
+      <div class="container left">
+        <!-- ! ---------------------------- -->
+        <!-- !         2.) QUIZ             -->
+        <!-- ! ---------------------------- -->
+        <section id="quiz">
+          <h1 id="quiz-question">The condition in an if / else statement is enclosed with ______.</h1>
+          <ol id="quiz-list">
+            <!-- <li class="btn">quotes</li>
+            <li class="btn">curly brackets</li>
+            <li class="btn">parenthesis</li>
+            <li class="btn">square brackets</li> -->
+          </ol>
+          <hr />
+          <p class="result"></p>
+        </section>
+        <!-- ! ---------------------------- -->
+        <!-- !         3.) ENDING           -->
+        <!-- ! ---------------------------- -->
+        <section id="ending">
+          <h1>All done!</h1>
+          <p>Your final score is <span id="score">22</span></p>
+          <form id="form" action="submit" class="flex">
+            <p>Enter Initials:</p>
+            <input type="text" name="initials" id="initials" />
+            <button class="btn">Submit</button>
+          </form>
+        </section>
+        <!-- ! ---------------------------- -->
+        <!-- !       4.) HIGH SCORES        -->
+        <!-- ! ---------------------------- -->
+        <section id="high-score-view">
+          <h1>High Scores</h1>
+          <div class="buttons"><button id="go-back" class="btn">Go Back</button> <button id="clear" class="btn">Clear high scores</button></div>
+        </section>
+      </div>
+    </main>
+    <script src="./assets/js/data.js"></script>
+    <script src="./assets/js/app.js"></script>
+  </body>
+</html>
