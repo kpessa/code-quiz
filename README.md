@@ -1,4 +1,5 @@
 # Code Quiz
+![Intro image of application](https://github.com/kpessa/code-quiz/raw/main/assets/images/image.png)
 
 ## Purpose
 A simple quiz application to demonstrate manipulation of DOM, javascript logic, and persistent local storage.
