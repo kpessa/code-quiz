@@ -63,6 +63,7 @@ var goBackHandler = function () {
   spnClock.textContent = '100';
   secHighScores.style.display = 'none';
   secIntro.style.display = 'block';
+  aViewHighScores.style.display = 'block';
 };
 
 var transitionToHighScores = function () {
@@ -120,6 +121,12 @@ var quizClickHandler = function (event) {
     } else {
       pResult.textContent = 'Wrong!';
       time -= 10;
+      if (time < 0) {
+        time = 0;
+        transitionToEnding();
+        spnClock.textContent = time;
+        return false;
+      }
     }
     i++;
     if (i < questions.length) {
@@ -131,7 +138,7 @@ var quizClickHandler = function (event) {
 };
 
 var createQuestion = function () {
-  h1.textContent = questions[i].question;
+  h1.textContent = `Question ${i + 1}: ${questions[i].question}`;
   quizList.innerHTML = '';
   questions[i].choices.forEach(function (choice) {
     var li = document.createElement('li');
@@ -144,6 +151,7 @@ var createQuestion = function () {
 var btnStartHandler = function () {
   interval = setInterval(countdown, 1000);
   secIntro.style.display = 'none';
+  aViewHighScores.style.display = 'none';
   secQuiz.style.display = 'block';
   createQuestion();
 };
@@ -155,6 +163,7 @@ var countdown = function () {
   } else {
     clearInterval(interval);
     time = 0;
+    spnClock.textContent = time;
     transitionToEnding();
   }
 };

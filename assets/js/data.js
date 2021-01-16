@@ -5,6 +5,31 @@ var questions = [
     answer: 'False',
   },
   {
+    question: 'Which of the following function of Array object extracts a section of an array and returns a new array?',
+    choices: 'reverse(), shift(), slice(), some()'.split(', '),
+    answer: 'slice()',
+  },
+  {
+    question: 'Which of the following function of Array object returns the last (greatest) index of an element within the array equal to the specified value, or -1 if none is found?',
+    choices: 'indexOf(), join(), lastIndex(), map()'.split(', '),
+    answer: 'indexOf()',
+  },
+  {
+    question: 'Which of the following function of String object combines the text of two strings and returns a new string?',
+    choices: 'add(), merge(), concat(), append()'.split(', '),
+    answer: 'concat()',
+  },
+  {
+    question: 'Which of the following function of String object returns the characters in a string beginning at the specified location through the specified number of characters?',
+    choices: 'slice(), split(), substr(), search()'.split(', '),
+    answer: 'substr()',
+  },
+  {
+    question: 'Which of the following function of String object returns a string representing the specified object?',
+    choices: 'toLocaleUpperCase(), toUpperCase(), toString(), substring()'.split(', '),
+    answer: 'toString()',
+  },
+  {
     question: 'Which built-in method sorts the elements of an array?',
     choices: ['changeOrder(order)', 'order()', 'sort()', 'None of the above.'],
     answer: 'sort()',
