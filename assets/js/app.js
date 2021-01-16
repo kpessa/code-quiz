@@ -1,3 +1,6 @@
+// VIEW HIGH SCORE LINK
+var aViewHighScores = document.getElementById('high-score');
+
 // SECTIONS
 var secIntro = document.getElementById('intro');
 var secQuiz = document.getElementById('quiz');
@@ -18,6 +21,7 @@ var buttons = document.querySelector('.buttons');
 // HIGH SCORES
 var btnGoBack = document.getElementById('go-back');
 var btnClear = document.getElementById('clear');
+var olHighScores = document.getElementById('high-scores');
 
 var btnStart = document.getElementById('btnStart');
 var spnClock = document.getElementById('clock');
@@ -25,6 +29,32 @@ var spnClock = document.getElementById('clock');
 var interval;
 var time = 100;
 var i = 0; // Question Index
+
+var clearHighScoresHandler = function () {
+  localStorage.setItem('highScores', '');
+  displayHighScores();
+};
+
+var displayHighScores = function () {
+  var strHighScores = localStorage.getItem('highScores');
+
+  olHighScores.innerHTML = '';
+  var li;
+  if (!strHighScores) {
+    li = document.createElement('li');
+    li.className = 'high-scores';
+    li.textContent = `No new scores to display!`;
+    olHighScores.appendChild(li);
+  } else {
+    var highScores = JSON.parse(strHighScores);
+    for (var i = 0; i < highScores.length; i++) {
+      li = document.createElement('li');
+      li.className = 'high-scores';
+      li.textContent = `${highScores[i].initials} - ${highScores[i].score}`;
+      olHighScores.appendChild(li);
+    }
+  }
+};
 
 var goBackHandler = function () {
   form.reset();
@@ -40,27 +70,37 @@ var transitionToHighScores = function () {
   secIntro.style.display = 'none';
   secHighScores.style.display = 'block';
 
-  var initials = localStorage.getItem('initials');
-  var highScore = localStorage.getItem('highScore');
-
-  if (initials && highScore) {
-    var p = document.createElement('p');
-    p.className = 'high-scores';
-    p.textContent = `${initials} - ${highScore}`;
-    secHighScores.insertBefore(p, buttons);
-  }
+  displayHighScores();
 };
 
 var frmHighScoreSubmitHandler = function (event) {
   event.preventDefault();
 
-  var initialsVal = initials.value;
+  var newScore = {
+    initials: initials.value,
+    score: time,
+  };
 
-  var highScore = localStorage.getItem('highScore');
+  var strHighScores = localStorage.getItem('highScores');
+  var highScores;
 
-  if (!highScore || time >= highScore) {
-    localStorage.setItem('initials', initialsVal);
-    localStorage.setItem('highScore', time);
+  if (!strHighScores) {
+    highScores = [];
+    highScores.push(newScore);
+    localStorage.setItem('highScores', JSON.stringify(highScores));
+  } else {
+    highScores = JSON.parse(strHighScores);
+    for (var i = 0; i < highScores.length; i++) {
+      if (newScore.score >= highScores[i].score) {
+        highScores.splice(i, 0, newScore);
+        break;
+      }
+      if (i == highScores.length - 1) {
+        highScores.push(newScore);
+        break;
+      }
+    }
+    localStorage.setItem('highScores', JSON.stringify(highScores));
   }
 
   transitionToHighScores();
@@ -79,7 +119,7 @@ var quizClickHandler = function (event) {
       pResult.textContent = 'Correct!';
     } else {
       pResult.textContent = 'Wrong!';
-      time == 10;
+      time -= 10;
     }
     i++;
     if (i < 2) {
@@ -123,3 +163,5 @@ secQuiz.onclick = quizClickHandler;
 btnStart.onclick = btnStartHandler;
 form.onsubmit = frmHighScoreSubmitHandler;
 btnGoBack.onclick = goBackHandler;
+btnClear.onclick = clearHighScoresHandler;
+aViewHighScores.onclick = transitionToHighScores;
