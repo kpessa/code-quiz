@@ -47,7 +47,7 @@ var displayHighScores = function () {
     olHighScores.appendChild(li);
   } else {
     var highScores = JSON.parse(strHighScores);
-    for (var i = 0; i < highScores.length; i++) {
+    for (var i = 0; i < Math.min(highScores.length, 10); i++) {
       li = document.createElement('li');
       li.className = 'high-scores';
       li.textContent = `${highScores[i].initials} - ${highScores[i].score}`;
@@ -122,7 +122,7 @@ var quizClickHandler = function (event) {
       time -= 10;
     }
     i++;
-    if (i < 2) {
+    if (i < questions.length) {
       createQuestion();
     } else {
       transitionToEnding();
