@@ -116,6 +116,7 @@ var transitionToEnding = function () {
 
 var quizClickHandler = function (event) {
   if (event.target.tagName == 'LI') {
+    console.log(event.target.textContent);
     if (event.target.textContent == questions[i].answer) {
       pResult.textContent = 'Correct!';
     } else {
@@ -129,7 +130,8 @@ var quizClickHandler = function (event) {
       }
     }
     i++;
-    if (i < questions.length) {
+    // if (i < questions.length ) {
+    if (i < 2) {
       createQuestion();
     } else {
       transitionToEnding();
